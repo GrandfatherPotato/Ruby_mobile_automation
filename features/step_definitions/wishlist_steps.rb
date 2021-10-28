@@ -1,3 +1,4 @@
+#Log user into account
 Given(/^Login a user$/) do
   steps %{
   And User goes to starting page
@@ -10,6 +11,7 @@ Given(/^Login a user$/) do
   }
 end
 
+#Add items to wishlist externally
 When(/^User opens main screen$/) do
   @screens.wishlist_screen.open_main_menu
 end
@@ -22,6 +24,24 @@ And(/^Add items to wishlist$/) do
   @screens.wishlist_screen.add_items_to_wishlist
 end
 
+
+#Wishlist tab functions
 Then(/^Open wishlist$/) do
+  @screens.wishlist_screen.open_wishlist
+end
+
+And(/^Open wishlist item$/) do
+  @screens.wishlist_screen.open_wishlist_item
+end
+
+And(/^Remove open item from wishlist$/) do
+  @screens.wishlist_screen.remove_from_wishlist
+end
+
+And(/^Return to wishlist$/) do
+  @screens.wishlist_screen.return_to_wishlist
+end
+
+Then(/^Delete all remaining elements with swipe method$/) do
   pending
 end
