@@ -7,4 +7,7 @@ class Screens
     @profile_screen ||= ProfileScreen.new
   end
 
+  def wishlist_screen
+    @wishlist_screen ||= WishlistScreen.new
+  end
 end
