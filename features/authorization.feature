@@ -1,4 +1,5 @@
 Feature: Authorization test case
+
   @Sign-up
   Scenario:Register a random user
     When User goes to starting page
