@@ -50,7 +50,7 @@ class WishlistScreen
 
   def delete_all_remaining_items
     while Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/wish_list_product_item_title']")
-      TouchAction().press(807, 450).move_to(150, 450).release
+      $driver.swipe(start_x: 807, start_y: 450, end_x: 150, end_y: 450, duration: 2000)
       Elements.new(:id, 'wish_list_product_item_remove').click
     end
   end

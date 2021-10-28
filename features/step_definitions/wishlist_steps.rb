@@ -43,5 +43,5 @@ And(/^Return to wishlist$/) do
 end
 
 Then(/^Delete all remaining elements with swipe method$/) do
-  pending
+  @screens.wishlist_screen.delete_all_remaining_items
 end
