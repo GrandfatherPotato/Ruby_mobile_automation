@@ -19,7 +19,7 @@ And(/^User opens (.*?) category$/) do |item|
 end
 
 And(/^Add items to wishlist$/) do
-  pending
+  @screens.wishlist_screen.add_items_to_wishlist
 end
 
 Then(/^Open wishlist$/) do
