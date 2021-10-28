@@ -51,9 +51,11 @@ class WishlistScreen
   #@todo Understand why this isn't working
   def delete_all_remaining_items
     while Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/wish_list_product_item_title']")
-      #$driver.swipe(start_x: 807, start_y: 450, end_x: 150, end_y: 450, duration: 2000)
-      action = new TouchAction(driver)
-      action.press(807, 450).moveTo((150 - 807), (450 - 450)).release().perform()
+      $driver.swipe(start_x: 807, start_y: 450, end_x: 150, end_y: 450, duration: 2000)
+      #action = new TouchAction
+      #action.press(807, 450).move_to((150 - 807), (450 - 450)).release().perform()
+      #$driver.swipe(807, 450, 150, 450, 2000)
+      #$driver.move_to(807, 150)
       Elements.new(:id, 'wish_list_product_item_remove').click
     end
   end

@@ -22,13 +22,11 @@ Before do
 end
 
 After do |scenario|
-  if scenario.failed?
-    add_screenshot(scenario.name)
-  end
+  add_screenshot(scenario.name) if scenario.failed?
 end
 
 def add_screenshot(scenario_name)
   screenshot_dir = "reports/#{scenario_name}.png"
   $driver.screenshot(screenshot_dir)
-  attach(screenshot_dir,'image/png')
+  attach(screenshot_dir, 'image/png')
 end
