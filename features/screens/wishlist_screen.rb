@@ -48,12 +48,16 @@ class WishlistScreen
     @wishlist_back_button.click
   end
 
-  #@todo Replace with previous code
   def delete_all_remaining_items
-    wishlist_item_array = @wishlist_item
-    wishlist_item_array.each do |i|
-      $driver.swipe(start_x: 960, start_y: 450, end_x: 150, end_y: 450, duration: 50_000)
+    wishlist_item_array = @wishlist_item.get_multiple_elements
+    i = wishlist_item_array.count
+    num = 1
+    until num > i
+      $driver.wait_true(@element_to_delete = Elements.new(:id, 'wish_list_product_item_remove'))
+      $driver.swipe(start_x: 960, start_y: 450, end_x: 150, end_y: 450, duration: 2000)
       Elements.new(:id, 'wish_list_product_item_remove').click
+      @wishlist_menu.click
+      num += 1
     end
   end
 
