@@ -45,3 +45,7 @@ end
 Then(/^Delete all remaining elements with swipe method$/) do
   @screens.wishlist_screen.delete_all_remaining_items
 end
+
+Then(/^Verify added items$/) do
+  pending
+end

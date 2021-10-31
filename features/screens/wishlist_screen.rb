@@ -5,6 +5,7 @@ class WishlistScreen
     @open_main_menu = Elements.new(:id, 'action_to_dashboard')
     @open_item_category = Elements.new(:xpath, :"//android.widget.TextView[contains(@text, 'T-shirts')]")
     @wishlist_button = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/product_category_small_item_wish_list']")
+    @wishlist_item_name = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/product_category_small_item_title']")
     #Wishlist menu functions
     @wishlist_menu = Elements.new(:id, 'action_to_wish_list')
     @wishlist_item = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/wish_list_product_item_title']")
@@ -25,6 +26,7 @@ class WishlistScreen
   # Just scroll the page after every 2 added elements and add them to the list
   def add_items_to_wishlist
     wishlist_button_arr = @wishlist_button.get_multiple_elements
+    @wishlist_item_names = @wishlist_item_name.get_multiple_elements
     i = 0
     while i < 4
       wishlist_button_arr[i].click
@@ -34,6 +36,18 @@ class WishlistScreen
 
   def open_wishlist
     @wishlist_menu.click
+  end
+
+  def verify_wishlist_items
+    n = @wishlist_item_names.count
+    #actually wishlisted item names
+    wishlisted_item_names = @wishlist_item_name.get_multiple_elements
+    i = 0
+    while i > n
+      expected = @wishlist_item_names[i]
+      actual = wishlisted_item_names[i]
+      raise "ELEMENT TEXT NOT CORRECT: Expected: #{expected}  Actual: #{actual}" unless expected == actual
+    end
   end
 
   def open_wishlist_item
@@ -52,7 +66,7 @@ class WishlistScreen
     wishlist_item_array = @wishlist_item.get_multiple_elements
     i = wishlist_item_array.count
     num = 1
-    until num > i
+    while num > i
       $driver.wait_true(@element_to_delete = Elements.new(:id, 'wish_list_product_item_remove'))
       $driver.swipe(start_x: 960, start_y: 450, end_x: 150, end_y: 450, duration: 2000)
       Elements.new(:id, 'wish_list_product_item_remove').click

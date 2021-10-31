@@ -6,7 +6,8 @@ Feature: Wishlist test case
     When User opens main screen
     And User opens T-shirt category
     And Add items to wishlist
-    Then Open wishlist
+    And Open wishlist
+    Then Verify added items
 
   @Wishlist @View @Item
   Scenario: View two items in the wishlist
