@@ -3,7 +3,7 @@ Given(/^Login a user$/) do
   steps %{
   And User goes to starting page
   And User presses Login
-  And User enters valtsdrozdovs@gmail.com into the email field
+  And User enters angrychicken2001@gmail.com into the email field
   And User enters Something#Fancy13 into the password field
   And User consents to TOS
   And User skips gender choice
