@@ -21,6 +21,6 @@ Feature: Authorization test case
     Then User sees home page
     And My profile page contains <email>
     Examples:
-      | email                   | password          |
-      | redextreme71@gmail.com  | CatCactus5#       |
-      | valtsdrozdovs@gmail.com | Something#Fancy13 |
+      | email                       | password          |
+      | redextreme71@gmail.com      | CatCactus5#       |
+      | angrychicken2001@gmail.com  | Something#Fancy13 |

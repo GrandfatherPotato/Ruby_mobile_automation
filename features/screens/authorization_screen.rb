@@ -63,7 +63,7 @@ class AuthorizationScreen
   end
 
   def login_tos_consent
-    @login_check_tos.click
+    #@login_check_tos.click
     @login_continue_tos.click
   end
 
