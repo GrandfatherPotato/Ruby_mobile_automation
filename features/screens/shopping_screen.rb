@@ -22,7 +22,7 @@ class ShoppingScreen
   end
 
   def add_item_to_cart
-    @added_item_name = Elements.new(:id, 'product_header_item_name')
+    @added_item_name = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/product_header_item_name']")
     @add_to_cart.click
   end
 
