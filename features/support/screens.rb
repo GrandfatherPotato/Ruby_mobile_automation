@@ -10,4 +10,8 @@ class Screens
   def wishlist_screen
     @wishlist_screen ||= WishlistScreen.new
   end
+
+  def shopping_screen
+    @shopping_screen ||= ShoppingScreen.new
+  end
 end

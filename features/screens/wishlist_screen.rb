@@ -44,7 +44,7 @@ class WishlistScreen
     #actually wishlisted item names
     wishlisted_item_names = @wishlist_item_name.get_multiple_elements
     i = 0
-    while i > n
+    while i < n
       expected = @wishlist_item_names[i]
       actual = wishlisted_item_names[i]
       raise "ELEMENT TEXT NOT CORRECT: Expected: #{expected}  Actual: #{actual}" unless expected == actual
