@@ -3,7 +3,6 @@ class WishlistScreen
   def initialize
     #Add wishlist item functions
     @open_main_menu = Elements.new(:id, 'action_to_dashboard')
-    @open_item_category = Elements.new(:xpath, :"//android.widget.TextView[contains(@text, 'T-shirts')]")
     @wishlist_button = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/product_category_small_item_wish_list']")
     @product_item_name = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/product_category_small_item_title']")
     #Wishlist menu functions
@@ -19,7 +18,7 @@ class WishlistScreen
   end
 
   def open_item_category(item)
-    @open_item_category.click
+    @open_item_category = Elements.new(:xpath, :"//android.widget.TextView[contains(@text, '\"#{item}\"')]").click
   end
 
   # Not the best way to do it, but works for now

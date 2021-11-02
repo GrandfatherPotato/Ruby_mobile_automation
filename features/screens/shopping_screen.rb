@@ -1,7 +1,7 @@
 class ShoppingScreen
 
   def initialize
-    @category_item = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/product_category_small_item_image']")
+    @category_item = Elements.new(:xpath, :"//android.widget.ImageView[@resource-id='pl.com.fourf.ecommerce:id/product_category_small_item_image']")
     @size_dropdown = Elements.new(:id, 'product_header_item_size')
     @size_options = Elements.new(:xpath, "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[@index='1']")
     @add_to_cart = Elements.new(:id, 'product_header_item_buy')
