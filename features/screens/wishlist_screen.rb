@@ -18,7 +18,7 @@ class WishlistScreen
   end
 
   def open_item_category(item)
-    @open_item_category = Elements.new(:xpath, :"//android.widget.TextView[contains(@text, '\"#{item}\"')]").click
+    @open_item_category = Elements.new(:xpath, :"//android.widget.TextView[contains(@text, \"#{item}\")]").click
   end
 
   # Not the best way to do it, but works for now
