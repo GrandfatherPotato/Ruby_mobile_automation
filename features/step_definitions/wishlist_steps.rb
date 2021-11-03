@@ -7,7 +7,6 @@ Given(/^Login a user$/) do
   And User enters Something#Fancy13 into the password field
   And User consents to TOS
   And User skips gender choice
-  Then User sees home page
   }
 end
 

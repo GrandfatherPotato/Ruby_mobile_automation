@@ -10,11 +10,11 @@ class WishlistScreen
     @wishlist_item = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/wish_list_product_item_title']")
     @items_wishlist_icon = Elements.new(:id, 'product_header_item_wish_list')
     @wishlist_back_button = Elements.new(:id, 'product_header_item_back_touch')
-    @wishlist_item_name = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/wish_list_product_item_title']")
+    @wishlist_item_name = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/wish_list_product_item_title']").get_text
   end
 
   def open_main_menu
-    @open_main_menu.click
+    @open_main_menu.get_element
   end
 
   def open_item_category(item)
@@ -45,7 +45,7 @@ class WishlistScreen
     i = 0
     while i < n
       expected = @wishlist_item_names[i]
-      actual = wishlisted_item_names[i]
+      actual = wishlisted_item_names[i].get_text
       raise "ELEMENT TEXT NOT CORRECT: Expected: #{expected}  Actual: #{actual}" unless expected == actual
     end
   end
@@ -66,7 +66,7 @@ class WishlistScreen
     wishlist_item_array = @wishlist_item.get_multiple_elements
     i = wishlist_item_array.count
     num = 1
-    while num > i
+    while num < i
       $driver.wait_true(@element_to_delete = Elements.new(:id, 'wish_list_product_item_remove'))
       $driver.swipe(start_x: 960, start_y: 450, end_x: 150, end_y: 450, duration: 2000)
       Elements.new(:id, 'wish_list_product_item_remove').click
