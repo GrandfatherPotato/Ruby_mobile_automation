@@ -1,16 +1,13 @@
 require "appium_lib"
 
-opts = {
-  caps: {
-    platformName: "Android",
-    deviceName: "Dog",
-    automationName: "UiAutomator2",
-    app: "/Users/valtsdrozdovs/Desktop/4F.apk",
-    udid: "R5CR60WHQZH"
-  },
-  appium_lib: {
-    server_url: "http://localhost:9090/wd/hub"
-  }
+opts = { caps: {
+  platformName: "Android",
+  deviceName: "Samsungs",
+  automationName: "UiAutomator2",
+  udid: "RF8N205TNHZ"
+},
+         appium_lib: {
+         }
 }
 
 $driver = Appium::Driver.new(opts,true)
