@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class WishlistScreen
 
   def initialize
@@ -24,12 +25,18 @@ class WishlistScreen
   # Could add a search trough whole page and add elements later
   # Just scroll the page after every 2 added elements and add them to the list
   def add_items_to_wishlist
+    amount_of_items_to_add = 4
     wishlist_button_arr = @wishlist_button.get_multiple_elements
-    @wishlist_item_names = @product_item_name.get_multiple_elements
+    temp_array = @product_item_name.get_multiple_elements
+    @wishlist_item_names = []
+    #Inverted index to preserve added order
+    inverted_index = amount_of_items_to_add - 1
     i = 0
-    while i < 4
+    while i < amount_of_items_to_add
+      @wishlist_item_names[inverted_index] = temp_array[i].text
       wishlist_button_arr[i].click
       i += 1
+      inverted_index -= 1
     end
   end
 
@@ -37,16 +44,22 @@ class WishlistScreen
     @wishlist_menu.click
   end
 
+  def wishlisted_item_names
+    # code here
+  end
+
   def verify_wishlist_items
-    @wishlist_item_name = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/wish_list_product_item_title']").get_text
+
+    # Loop to verify items against each other
     n = @wishlist_item_names.count
-    #actually wishlisted item names
-    wishlisted_item_names = @wishlist_item_name.get_multiple_elements
+    temp_arr = @wishlist_item.get_multiple_elements
     i = 0
     while i < n
-      expected = @wishlist_item_names[i]
-      actual = wishlisted_item_names[i].get_text
+      wishlisted_item_name = temp_arr[i].text
+      expected = @wishlist_item_names[i].upcase
+      actual = wishlisted_item_name
       raise "ELEMENT TEXT NOT CORRECT: Expected: #{expected}  Actual: #{actual}" unless expected == actual
+      i += 1
     end
   end
 
@@ -65,7 +78,7 @@ class WishlistScreen
   def delete_all_remaining_items
     wishlist_item_array = @wishlist_item.get_multiple_elements
     i = wishlist_item_array.count
-    num = 1
+    num = 0
     while num < i
       $driver.wait_true(@element_to_delete = Elements.new(:id, 'wish_list_product_item_remove'))
       $driver.swipe(start_x: 960, start_y: 450, end_x: 150, end_y: 450, duration: 2000)
