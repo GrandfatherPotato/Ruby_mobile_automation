@@ -21,12 +21,15 @@ Before do
   @screens = Screens.new
 end
 
+
 After do |scenario|
-  add_screenshot(scenario.name) if scenario.failed?
+  if scenario.failed?
+    add_screenshot(scenario.name)
+  end
 end
 
 def add_screenshot(scenario_name)
   screenshot_dir = "reports/#{scenario_name}.png"
   $driver.screenshot(screenshot_dir)
-  attach(screenshot_dir, 'image/png')
+  attach(screenshot_dir,'image/png')
 end

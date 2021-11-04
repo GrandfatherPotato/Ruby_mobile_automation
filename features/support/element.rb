@@ -16,7 +16,7 @@ class Elements
     }
   end
 
-  def click(timeout: 15)
+  def click(timeout: 20)
     wait_opts = {
       timeout: timeout,
       interval: 0.3,

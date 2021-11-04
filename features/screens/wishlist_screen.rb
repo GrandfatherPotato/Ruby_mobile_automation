@@ -10,11 +10,10 @@ class WishlistScreen
     @wishlist_item = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/wish_list_product_item_title']")
     @items_wishlist_icon = Elements.new(:id, 'product_header_item_wish_list')
     @wishlist_back_button = Elements.new(:id, 'product_header_item_back_touch')
-    @wishlist_item_name = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/wish_list_product_item_title']").get_text
   end
 
   def open_main_menu
-    @open_main_menu.get_element
+    @open_main_menu.click
   end
 
   def open_item_category(item)
@@ -39,6 +38,7 @@ class WishlistScreen
   end
 
   def verify_wishlist_items
+    @wishlist_item_name = Elements.new(:xpath, :"//android.widget.TextView[@resource-id='pl.com.fourf.ecommerce:id/wish_list_product_item_title']").get_text
     n = @wishlist_item_names.count
     #actually wishlisted item names
     wishlisted_item_names = @wishlist_item_name.get_multiple_elements
