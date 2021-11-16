@@ -81,7 +81,11 @@ class WishlistScreen
     num = 0
     while num < i
       $driver.wait_true(@element_to_delete = Elements.new(:id, 'wish_list_product_item_remove'))
-      $driver.swipe(start_x: 960, start_y: 450, end_x: 150, end_y: 450, duration: 2000)
+      @element_to_delete = Elements.new(:id, 'wish_list_product_item_remove')
+      element_to_delete_startX = @element_to_delete.get_element.size.width
+      element_to_delete_endX = (@element_to_delete.get_element.size.width * 0.5).normalize
+      element_to_delete_midY = (@element_to_delete.get_element.size.height * 0.5).normalize
+      $driver.swipe(start_x: element_to_delete_startX, start_y: element_to_delete_midY, end_x: element_to_delete_endX, end_y: element_to_delete_midY, duration: 2000)
       Elements.new(:id, 'wish_list_product_item_remove').click
       @wishlist_menu.click
       num += 1
